@@ -1,5 +1,13 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "declaration": false,
+    "types": ["vite/client"],
+    "paths": {
+      "@/*": ["src/*"],
+      "#/*": ["types/*"]
+    },
+
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -20,6 +28,19 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": [
+    "./internal/**/*.ts",
+    "viest/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "types/**/*.d.ts",
+    "types/**/*.ts",
+    "build/**/*.ts",
+    "build/**/*.d.ts",
+    "mock/**/*.ts",
+    "vite.config.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,4 +1,5 @@
-import "uno.css";
+import "virtual:uno.css";
+import "virtual:unocss-devtools";
 
 import { createApp } from "vue";
 /** 重置样式 这里引入自定义的重置样式也可 */

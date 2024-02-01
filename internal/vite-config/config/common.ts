@@ -1,3 +1,4 @@
+import UnoCSS from "unocss/vite";
 import { type UserConfig } from "vite";
 
 const commonConfig: (mode: string) => UserConfig = (mode) => ({
@@ -15,6 +16,7 @@ const commonConfig: (mode: string) => UserConfig = (mode) => ({
       maxParallelFileOps: 3,
     },
   },
+  plugins: [UnoCSS()],
 });
 
 export { commonConfig };

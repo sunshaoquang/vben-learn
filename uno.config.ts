@@ -1,22 +1,39 @@
-// eslint-disable-next-line no-restricted-imports
 import {
   defineConfig,
+  presetTypography,
+  presetUno,
   presetAttributify,
   presetIcons,
-  presetUno,
+  transformerDirectives,
+  transformerVariantGroup,
 } from "unocss";
 
 export default defineConfig({
-  rules: [["custom-rule", { color: "red" }]],
-  shortcuts: {
-    "custom-shortcut": "text-lg text-orange hover:text-teal",
-  },
   presets: [
     presetUno(),
+    presetTypography(),
+    // 支持css class属性化，eg: `<button bg="blue-400 hover:blue-500 dark:blue-500 dark:hover:blue-600" text="sm white">attributify Button</button>`
     presetAttributify(),
+    // 支持图标，需要搭配图标库，eg: @iconify-json/carbon, 使用 `<button class="i-carbon-sun dark:i-carbon-moon" />`
     presetIcons({
       scale: 1.2,
-      cdn: "https://esm.sh/",
+      warn: true,
+      extraProperties: {
+        display: "inline-block",
+        "vertical-align": "middle",
+      },
     }),
+  ],
+  /**
+   * 自定义快捷语句
+   * @see https://github.com/unocss/unocss#shortcuts
+   */
+  shortcuts: [["center", "flex justify-center items-center"]],
+  transformers: [
+    // 启用 @apply 功能
+    transformerDirectives(),
+    // 启用 () 分组功能
+    // 支持css class组合，eg: `<div class="hover:(bg-gray-400 font-medium) font-(light mono)">测试 unocss</div>`
+    transformerVariantGroup(),
   ],
 });
